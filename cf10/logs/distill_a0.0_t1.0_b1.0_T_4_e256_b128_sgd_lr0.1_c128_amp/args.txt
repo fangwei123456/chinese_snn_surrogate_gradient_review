@@ -1,0 +1,2 @@
+Namespace(T=4, alpha=0.0, amp=True, ann='/home/wfang/chinese_review/cf10/logs/pt/logs/ann_e256_b128_sgd_lr0.1_c128_amp/checkpoint_latest.pth', b=128, beta=1.0, channels=128, data_dir='/datasets/CIFAR10', device='cuda:1', epochs=256, j=4, lr=0.1, momentum=0.9, opt='sgd', out_dir='./logs', prefix='distill', resume=None, temp=1.0)
+distill.py -data-dir /datasets/CIFAR10 -amp -opt sgd -channels 128 -epochs 256 -beta 1 -device cuda:1

@@ -1,0 +1,1018 @@
+Namespace(dataset='gen1', path='/home/pkumdy/SNNDet/Gen/Gen', num_classes=2, devices='auto', b=16, sample_size=100000, T=5, tbin=2, image_shape=(240, 304), epochs=50, lr=0.001, wd=0.0001, limit_train_batches=1.0, limit_val_batches=1.0, limit_test_batches=1.0, num_workers=4, train=True, test=True, precision='16-mixed', save_ckpt=True, early_stopping=False, model='densenet-121_24', bn=True, pretrained_backbone=None, pretrained=None, extras=[640, 320, 320], fusion=False, fusion_layers=3, mode='res', min_ratio=0.05, max_ratio=0.8, aspect_ratios=[[2], [2, 3], [2, 3], [2, 3], [2], [2]], box_coder_weights=[10.0, 10.0, 5.0, 5.0], iou_threshold=0.5, score_thresh=0.01, nms_thresh=0.45, topk_candidates=200, detections_per_img=100)
+[96, 192, 768, 640, 320, 320]
+DetectionLitModule(
+  (backbone): DetectionBackbone(
+    (model): MultiStepSpikingDenseNet(
+      (features): Sequential(
+        (pad0): ConstantPad2d(padding=(1, 1, 1, 1), value=0.0)
+        (norm0): BatchNorm2d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv0): Conv2d(4, 48, kernel_size=(3, 3), stride=(2, 2), bias=False)
+        (act0): ParametricLIFNode(
+          v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+          (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+        )
+        (pool0): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+        (denseblock1): _DenseBlock(
+          (denselayer1): _DenseLayer(
+            (norm1): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(48, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer2): _DenseLayer(
+            (norm1): BatchNorm2d(72, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(72, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer3): _DenseLayer(
+            (norm1): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(96, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer4): _DenseLayer(
+            (norm1): BatchNorm2d(120, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(120, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer5): _DenseLayer(
+            (norm1): BatchNorm2d(144, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(144, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer6): _DenseLayer(
+            (norm1): BatchNorm2d(168, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(168, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+        )
+        (transition1): _Transition(
+          (norm): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv): Conv2d(192, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (act): ParametricLIFNode(
+            v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+            (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+          )
+          (pool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+        )
+        (denseblock2): _DenseBlock(
+          (denselayer1): _DenseLayer(
+            (norm1): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(96, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer2): _DenseLayer(
+            (norm1): BatchNorm2d(120, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(120, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer3): _DenseLayer(
+            (norm1): BatchNorm2d(144, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(144, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer4): _DenseLayer(
+            (norm1): BatchNorm2d(168, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(168, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer5): _DenseLayer(
+            (norm1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(192, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer6): _DenseLayer(
+            (norm1): BatchNorm2d(216, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(216, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer7): _DenseLayer(
+            (norm1): BatchNorm2d(240, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(240, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer8): _DenseLayer(
+            (norm1): BatchNorm2d(264, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(264, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer9): _DenseLayer(
+            (norm1): BatchNorm2d(288, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(288, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer10): _DenseLayer(
+            (norm1): BatchNorm2d(312, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(312, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer11): _DenseLayer(
+            (norm1): BatchNorm2d(336, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(336, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer12): _DenseLayer(
+            (norm1): BatchNorm2d(360, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(360, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+        )
+        (transition2): _Transition(
+          (norm): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv): Conv2d(384, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (act): ParametricLIFNode(
+            v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+            (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+          )
+          (pool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+        )
+        (denseblock3): _DenseBlock(
+          (denselayer1): _DenseLayer(
+            (norm1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(192, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer2): _DenseLayer(
+            (norm1): BatchNorm2d(216, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(216, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer3): _DenseLayer(
+            (norm1): BatchNorm2d(240, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(240, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer4): _DenseLayer(
+            (norm1): BatchNorm2d(264, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(264, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer5): _DenseLayer(
+            (norm1): BatchNorm2d(288, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(288, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer6): _DenseLayer(
+            (norm1): BatchNorm2d(312, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(312, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer7): _DenseLayer(
+            (norm1): BatchNorm2d(336, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(336, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer8): _DenseLayer(
+            (norm1): BatchNorm2d(360, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(360, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer9): _DenseLayer(
+            (norm1): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(384, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer10): _DenseLayer(
+            (norm1): BatchNorm2d(408, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(408, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer11): _DenseLayer(
+            (norm1): BatchNorm2d(432, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(432, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer12): _DenseLayer(
+            (norm1): BatchNorm2d(456, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(456, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer13): _DenseLayer(
+            (norm1): BatchNorm2d(480, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(480, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer14): _DenseLayer(
+            (norm1): BatchNorm2d(504, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(504, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer15): _DenseLayer(
+            (norm1): BatchNorm2d(528, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(528, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer16): _DenseLayer(
+            (norm1): BatchNorm2d(552, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(552, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer17): _DenseLayer(
+            (norm1): BatchNorm2d(576, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(576, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer18): _DenseLayer(
+            (norm1): BatchNorm2d(600, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(600, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer19): _DenseLayer(
+            (norm1): BatchNorm2d(624, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(624, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer20): _DenseLayer(
+            (norm1): BatchNorm2d(648, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(648, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer21): _DenseLayer(
+            (norm1): BatchNorm2d(672, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(672, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer22): _DenseLayer(
+            (norm1): BatchNorm2d(696, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(696, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer23): _DenseLayer(
+            (norm1): BatchNorm2d(720, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(720, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer24): _DenseLayer(
+            (norm1): BatchNorm2d(744, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(744, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+        )
+        (transition3): _Transition(
+          (norm): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv): Conv2d(768, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (act): ParametricLIFNode(
+            v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+            (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+          )
+          (pool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+        )
+        (denseblock4): _DenseBlock(
+          (denselayer1): _DenseLayer(
+            (norm1): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(384, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer2): _DenseLayer(
+            (norm1): BatchNorm2d(408, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(408, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer3): _DenseLayer(
+            (norm1): BatchNorm2d(432, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(432, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer4): _DenseLayer(
+            (norm1): BatchNorm2d(456, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(456, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer5): _DenseLayer(
+            (norm1): BatchNorm2d(480, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(480, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer6): _DenseLayer(
+            (norm1): BatchNorm2d(504, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(504, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer7): _DenseLayer(
+            (norm1): BatchNorm2d(528, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(528, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer8): _DenseLayer(
+            (norm1): BatchNorm2d(552, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(552, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer9): _DenseLayer(
+            (norm1): BatchNorm2d(576, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(576, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer10): _DenseLayer(
+            (norm1): BatchNorm2d(600, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(600, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer11): _DenseLayer(
+            (norm1): BatchNorm2d(624, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(624, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer12): _DenseLayer(
+            (norm1): BatchNorm2d(648, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(648, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer13): _DenseLayer(
+            (norm1): BatchNorm2d(672, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(672, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer14): _DenseLayer(
+            (norm1): BatchNorm2d(696, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(696, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer15): _DenseLayer(
+            (norm1): BatchNorm2d(720, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(720, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+          (denselayer16): _DenseLayer(
+            (norm1): BatchNorm2d(744, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv1): Conv2d(744, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (act1): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+            (norm2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv2): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (act2): ParametricLIFNode(
+              v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+              (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+            )
+          )
+        )
+      )
+      (classifier): Sequential(
+        (norm_classif): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv_classif): Conv2d(768, 2, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (act_classif): ParametricLIFNode(
+          v_threshold=1.0, v_reset=0.0, detach_reset=False, step_mode=m, backend=cupy, tau=2.0
+          (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+        )
+      )
+    )
+    (extras): ModuleList(
+      (0): Sequential(
+        (0): SpikingBlock(
+          (bn_conv): SeqToANNContainer(
+            (0): ConstantPad2d(padding=(0, 0, 0, 0), value=0.0)
+            (1): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): Conv2d(768, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          )
+          (neuron): ParametricLIFNode(
+            v_threshold=1.0, v_reset=0.0, detach_reset=True, step_mode=m, backend=torch, tau=2.0
+            (surrogate_function): ATan(alpha=2.0, spiking=True)
+          )
+        )
+        (1): SpikingBlock(
+          (bn_conv): SeqToANNContainer(
+            (0): ConstantPad2d(padding=(1, 1, 1, 1), value=0.0)
+            (1): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): Conv2d(384, 640, kernel_size=(3, 3), stride=(2, 2), bias=False)
+          )
+          (neuron): ParametricLIFNode(
+            v_threshold=1.0, v_reset=0.0, detach_reset=True, step_mode=m, backend=torch, tau=2.0
+            (surrogate_function): ATan(alpha=2.0, spiking=True)
+          )
+        )
+      )
+      (1): Sequential(
+        (0): SpikingBlock(
+          (bn_conv): SeqToANNContainer(
+            (0): ConstantPad2d(padding=(0, 0, 0, 0), value=0.0)
+            (1): BatchNorm2d(640, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): Conv2d(640, 160, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          )
+          (neuron): ParametricLIFNode(
+            v_threshold=1.0, v_reset=0.0, detach_reset=True, step_mode=m, backend=torch, tau=2.0
+            (surrogate_function): ATan(alpha=2.0, spiking=True)
+          )
+        )
+        (1): SpikingBlock(
+          (bn_conv): SeqToANNContainer(
+            (0): ConstantPad2d(padding=(1, 1, 1, 1), value=0.0)
+            (1): BatchNorm2d(160, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): Conv2d(160, 320, kernel_size=(3, 3), stride=(2, 2), bias=False)
+          )
+          (neuron): ParametricLIFNode(
+            v_threshold=1.0, v_reset=0.0, detach_reset=True, step_mode=m, backend=torch, tau=2.0
+            (surrogate_function): ATan(alpha=2.0, spiking=True)
+          )
+        )
+      )
+      (2): Sequential(
+        (0): SpikingBlock(
+          (bn_conv): SeqToANNContainer(
+            (0): ConstantPad2d(padding=(0, 0, 0, 0), value=0.0)
+            (1): BatchNorm2d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): Conv2d(320, 160, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          )
+          (neuron): ParametricLIFNode(
+            v_threshold=1.0, v_reset=0.0, detach_reset=True, step_mode=m, backend=torch, tau=2.0
+            (surrogate_function): ATan(alpha=2.0, spiking=True)
+          )
+        )
+        (1): SpikingBlock(
+          (bn_conv): SeqToANNContainer(
+            (0): ConstantPad2d(padding=(1, 1, 1, 1), value=0.0)
+            (1): BatchNorm2d(160, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): Conv2d(160, 320, kernel_size=(3, 3), stride=(2, 2), bias=False)
+          )
+          (neuron): ParametricLIFNode(
+            v_threshold=1.0, v_reset=0.0, detach_reset=True, step_mode=m, backend=torch, tau=2.0
+            (surrogate_function): ATan(alpha=2.0, spiking=True)
+          )
+        )
+      )
+    )
+  )
+  (anchor_generator): GridSizeDefaultBoxGenerator(aspect_ratios=[[2], [2, 3], [2, 3], [2, 3], [2], [2]], clip=True, scales=[0.05, 0.2, 0.35, 0.5, 0.65, 0.8, 1.0], steps=None)
+  (head): SSDHead(
+    (classification_head): SSDClassificationHead(
+      (module_list): ModuleList(
+        (0): Sequential(
+          (0): ConstantPad2d(padding=(1, 1, 1, 1), value=0.0)
+          (1): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): Conv2d(96, 8, kernel_size=(3, 3), stride=(1, 1), bias=False)
+        )
+        (1): Sequential(
+          (0): ConstantPad2d(padding=(1, 1, 1, 1), value=0.0)
+          (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): Conv2d(192, 12, kernel_size=(3, 3), stride=(1, 1), bias=False)
+        )
+        (2): Sequential(
+          (0): ConstantPad2d(padding=(1, 1, 1, 1), value=0.0)
+          (1): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): Conv2d(768, 12, kernel_size=(3, 3), stride=(1, 1), bias=False)
+        )
+        (3): Sequential(
+          (0): ConstantPad2d(padding=(1, 1, 1, 1), value=0.0)
+          (1): BatchNorm2d(640, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): Conv2d(640, 12, kernel_size=(3, 3), stride=(1, 1), bias=False)
+        )
+        (4): Sequential(
+          (0): ConstantPad2d(padding=(1, 1, 1, 1), value=0.0)
+          (1): BatchNorm2d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): Conv2d(320, 8, kernel_size=(3, 3), stride=(1, 1), bias=False)
+        )
+        (5): Sequential(
+          (0): ConstantPad2d(padding=(1, 1, 1, 1), value=0.0)
+          (1): BatchNorm2d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): Conv2d(320, 8, kernel_size=(3, 3), stride=(1, 1), bias=False)
+        )
+      )
+    )
+    (regression_head): SSDRegressionHead(
+      (module_list): ModuleList(
+        (0): Sequential(
+          (0): ConstantPad2d(padding=(1, 1, 1, 1), value=0.0)
+          (1): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): Conv2d(96, 16, kernel_size=(3, 3), stride=(1, 1), bias=False)
+        )
+        (1): Sequential(
+          (0): ConstantPad2d(padding=(1, 1, 1, 1), value=0.0)
+          (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): Conv2d(192, 24, kernel_size=(3, 3), stride=(1, 1), bias=False)
+        )
+        (2): Sequential(
+          (0): ConstantPad2d(padding=(1, 1, 1, 1), value=0.0)
+          (1): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): Conv2d(768, 24, kernel_size=(3, 3), stride=(1, 1), bias=False)
+        )
+        (3): Sequential(
+          (0): ConstantPad2d(padding=(1, 1, 1, 1), value=0.0)
+          (1): BatchNorm2d(640, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): Conv2d(640, 24, kernel_size=(3, 3), stride=(1, 1), bias=False)
+        )
+        (4): Sequential(
+          (0): ConstantPad2d(padding=(1, 1, 1, 1), value=0.0)
+          (1): BatchNorm2d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): Conv2d(320, 16, kernel_size=(3, 3), stride=(1, 1), bias=False)
+        )
+        (5): Sequential(
+          (0): ConstantPad2d(padding=(1, 1, 1, 1), value=0.0)
+          (1): BatchNorm2d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): Conv2d(320, 16, kernel_size=(3, 3), stride=(1, 1), bias=False)
+        )
+      )
+    )
+  )
+)

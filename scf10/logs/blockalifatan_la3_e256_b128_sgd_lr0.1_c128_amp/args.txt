@@ -1,0 +1,2 @@
+Namespace(amp=True, b=128, channels=128, data_dir='../data', device='cuda:0', epochs=256, j=0, latency=3, lr=0.1, momentum=0.9, opt='sgd', out_dir='./logs_blockalif1d', prefix='blockalifatan', resume=None, type='blockalif')
+blockalif1d.py -data-dir ../data -amp -opt sgd -channels 128 -epochs 256 -out-dir ./logs_blockalif1d -type blockalif -latency 3

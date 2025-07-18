@@ -1,0 +1,151 @@
+@g1
+python object_detection.py -device 0 -num_workers 4 -test -save_ckpt -backbone densenet-121_16 -b 16 -fusion_layers 3 -mode res -sn if -norm bn -pretrained_backbone /home/wfang/SFOD/pt_classification/if_bn/ckpt-ncars-densenet-121_16-val/ncars-epoch=03-val_acc=0.8100.ckpt -debug
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│       val_AP_IoU=.5       │   0.0013131505419299704   │
+│   val_AP_IoU=.5:.05:.95   │  0.00023276557937252428   │
+│      val_AP_IoU=.75       │   8.358756305070185e-06   │
+│       val_AP_large        │   0.001271702228247224    │
+│       val_AP_medium       │   0.0038272769351139443   │
+│       val_AP_small        │  0.00019425710186357683   │
+│       val_AR_det=1        │   0.001583629157383124    │
+│       val_AR_det=10       │   0.013224792568467928    │
+│      val_AR_det=100       │    0.05494099040291792    │
+│       val_AR_large        │   0.028016329638717318    │
+│       val_AR_medium       │    0.04265949812836316    │
+│       val_AR_small        │    0.08252535496957406    │
+└───────────────────────────┴───────────────────────────┘
+sop= 385.8605754133301
+
+
+
+@g1
+python object_detection.py -device 1 -num_workers 4 -test -save_ckpt -backbone densenet-121_16 -b 16 -fusion_layers 3 -mode res -sn lif -norm bn -pretrained_backbone /home/wfang/SFOD/pt_classification/lif_bn/ckpt-ncars-densenet-121_16-val/ncars-epoch=08-val_acc=0.9169.ckpt -debug
+
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│       val_AP_IoU=.5       │    0.43992195828987324    │
+│   val_AP_IoU=.5:.05:.95   │    0.21057425990048825    │
+│      val_AP_IoU=.75       │    0.17282688852478617    │
+│       val_AP_large        │    0.21849255163741482    │
+│       val_AP_medium       │    0.2551603824047747     │
+│       val_AP_small        │    0.0644809411961791     │
+│       val_AR_det=1        │    0.20266318233137018    │
+│       val_AR_det=10       │    0.38006586418653965    │
+│      val_AR_det=100       │    0.4074153687178753     │
+│       val_AR_large        │    0.4274642524748288     │
+│       val_AR_medium       │    0.4392906296915581     │
+│       val_AR_small        │    0.27177615943159644    │
+└───────────────────────────┴───────────────────────────┘
+sop= 296.33485310595705
+
+
+@g1
+python object_detection.py -device 2 -num_workers 4 -test -save_ckpt -backbone densenet-121_16 -b 16 -fusion_layers 3 -mode res -sn clif -norm bn -pretrained_backbone /home/wfang/SFOD/pt_classification/clif_bn/ckpt-ncars-densenet-121_16-val/ncars-epoch=06-val_acc=0.8534.ckpt -lr 1e-4 -debug -resume /home/wfang/SFOD/debug_pt_detection/clif_bn/ckpt-od-gen1-densenet-121_16-train/gen1-epoch=32-train_loss=1.8189.ckpt
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│       val_AP_IoU=.5       │    0.23881171007701407    │
+│   val_AP_IoU=.5:.05:.95   │    0.09020373604098102    │
+│      val_AP_IoU=.75       │    0.05172719176539637    │
+│       val_AP_large        │    0.1397188678978684     │
+│       val_AP_medium       │    0.11414674240585926    │
+│       val_AP_small        │    0.03070400772004683    │
+│       val_AR_det=1        │    0.12034040863642015    │
+│       val_AR_det=10       │    0.26151920799736617    │
+│      val_AR_det=100       │    0.3102802020019058     │
+│       val_AR_large        │    0.33405180923371974    │
+│       val_AR_medium       │    0.3300020276159158     │
+│       val_AR_small        │    0.22210536134647607    │
+└───────────────────────────┴───────────────────────────┘
+sop= 353.02718818798826
+
+
+
+@g3
+python object_detection.py -device 0 -num_workers 4 -test -save_ckpt -backbone densenet-121_16 -b 16 -fusion_layers 3 -mode res -sn spsn3 -norm bn -pretrained_backbone /home/wfang/SFOD/pt_classification/spsn3_bn/ckpt-ncars-densenet-121_16-val/ncars-epoch=12-val_acc=0.9141.ckpt -debug
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│       val_AP_IoU=.5       │    0.4781183010530182     │
+│   val_AP_IoU=.5:.05:.95   │    0.23906285357767756    │
+│      val_AP_IoU=.75       │    0.20828569215654005    │
+│       val_AP_large        │    0.21904000001477797    │
+│       val_AP_medium       │    0.28109926701879656    │
+│       val_AP_small        │    0.09444843101254656    │
+│       val_AR_det=1        │     0.223110805099369     │
+│       val_AR_det=10       │    0.4097051471637451     │
+│      val_AR_det=100       │    0.43001638950757287    │
+│       val_AR_large        │    0.4251956595312632     │
+│       val_AR_medium       │    0.46330911623735443    │
+│       val_AR_small        │    0.2806969026798818     │
+└───────────────────────────┴───────────────────────────┘
+sop= 293.53200905249025
+
+
+@g2
+python object_detection.py -device 3 -num_workers 4 -test -save_ckpt -backbone densenet-121_16 -b 16 -fusion_layers 3 -mode res -sn lif -norm tebn -pretrained_backbone /home/wfang/SFOD/pt_classification/lif_tebn/ckpt-ncars-densenet-121_16-val/ncars-epoch=09-val_acc=0.9096.ckpt -debug
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│       val_AP_IoU=.5       │    0.5213307913985457     │
+│   val_AP_IoU=.5:.05:.95   │    0.26555922723310904    │
+│      val_AP_IoU=.75       │    0.23629334795384585    │
+│       val_AP_large        │    0.26251158297263244    │
+│       val_AP_medium       │     0.311527957797925     │
+│       val_AP_small        │    0.10582173016210801    │
+│       val_AR_det=1        │    0.23491764561128797    │
+│       val_AR_det=10       │    0.42712784175858776    │
+│      val_AR_det=100       │     0.445953964544098     │
+│       val_AR_large        │    0.4606428208816312     │
+│       val_AR_medium       │    0.48061053761908246    │
+│       val_AR_small        │    0.29014908835175174    │
+└───────────────────────────┴───────────────────────────┘
+sop= 214.71965004846192
+
+
+@g2
+python object_detection.py -device 2 -num_workers 4 -test -save_ckpt -backbone densenet-121_16 -b 16 -fusion_layers 3 -mode res -sn osr -norm osr -pretrained_backbone /home/wfang/SFOD/pt_classification/osr_osr/ckpt-ncars-densenet-121_16-val/ncars-epoch=01-val_acc=0.5623.ckpt -lr 1e-4 -debug
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│       val_AP_IoU=.5       │   0.0006969921050820483   │
+│   val_AP_IoU=.5:.05:.95   │  0.00031848838204954767   │
+│      val_AP_IoU=.75       │   7.751314032357488e-06   │
+│       val_AP_large        │   0.000279141848062975    │
+│       val_AP_medium       │  0.00036134914367823306   │
+│       val_AP_small        │   0.000990248190301207    │
+│       val_AR_det=1        │   0.0006427609542259034   │
+│       val_AR_det=10       │   0.0014354803392513382   │
+│      val_AR_det=100       │   0.004153073224140713    │
+│       val_AR_large        │   0.006801195814648731    │
+│       val_AR_medium       │    0.00442689735882157    │
+│       val_AR_small        │   0.0020202116136501884   │
+└───────────────────────────┴───────────────────────────┘
+sop= 305.9300718242836
+
+@g2
+python object_detection.py -device 1 -num_workers 4 -test -save_ckpt -backbone densenet-121_16 -b 16 -fusion_layers 3 -mode res -sn blockalif -norm bn -pretrained_backbone /home/wfang/SFOD/pt_classification/blockalif_bn/ckpt-ncars-densenet-121_16-val/ncars-epoch=11-val_acc=0.6814.ckpt -debug
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│       val_AP_IoU=.5       │    0.13473591193224072    │
+│   val_AP_IoU=.5:.05:.95   │    0.04574062475578002    │
+│      val_AP_IoU=.75       │   0.019654683675039725    │
+│       val_AP_large        │   0.011186429894357412    │
+│       val_AP_medium       │    0.06093944390900633    │
+│       val_AP_small        │    0.02365895902969289    │
+│       val_AR_det=1        │    0.08168630763110575    │
+│       val_AR_det=10       │    0.23200579162757448    │
+│      val_AR_det=100       │    0.2891250252787454     │
+│       val_AR_large        │    0.23878112925515413    │
+│       val_AR_medium       │    0.30035782406501643    │
+│       val_AR_small        │    0.23123309386030969    │
+└───────────────────────────┴───────────────────────────┘
+sop= 232.6882028635254

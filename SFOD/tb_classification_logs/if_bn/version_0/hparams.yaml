@@ -1,0 +1,6 @@
+T: 5
+encoding: fre
+epochs: 30
+loss_fun: mse
+lr: 0.005
+num_classes: 2

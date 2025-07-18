@@ -1,0 +1,60 @@
+args: !!python/object:argparse.Namespace
+  T: 5
+  aspect_ratios:
+  - - 2
+  - - 2
+    - 3
+  - - 2
+    - 3
+  - - 2
+    - 3
+  - - 2
+  - - 2
+  b: 16
+  box_coder_weights:
+  - 10.0
+  - 10.0
+  - 5.0
+  - 5.0
+  dataset: gen1
+  debug: true
+  detections_per_img: 100
+  device: 2
+  early_stopping: false
+  epochs: 50
+  extras:
+  - 640
+  - 320
+  - 320
+  fusion: false
+  fusion_layers: 3
+  image_shape: !!python/tuple
+  - 240
+  - 304
+  iou_threshold: 0.5
+  limit_test_batches: 1.0
+  limit_train_batches: 1.0
+  limit_val_batches: 1.0
+  lr: 0.0001
+  max_ratio: 0.8
+  min_ratio: 0.05
+  mode: res
+  model: densenet-121_16
+  nms_thresh: 0.45
+  norm: bn
+  num_classes: 2
+  num_workers: 4
+  path: /home/pkumdy/SNNDet/Gen/Gen
+  precision: 16-mixed
+  pretrained: null
+  pretrained_backbone: /home/wfang/SFOD/pt_classification/clif_bn/ckpt-ncars-densenet-121_16-val/ncars-epoch=06-val_acc=0.8534.ckpt
+  resume: /home/wfang/SFOD/debug_pt_detection/clif_bn/ckpt-od-gen1-densenet-121_16-train/gen1-epoch=32-train_loss=1.8189.ckpt
+  sample_size: 100000
+  save_ckpt: true
+  score_thresh: 0.01
+  sn: clif
+  tbin: 2
+  test: true
+  topk_candidates: 200
+  train: true
+  wd: 0.0001
