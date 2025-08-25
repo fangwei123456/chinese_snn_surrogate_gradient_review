@@ -1,6 +1,8 @@
 # 《脉冲深度学习梯度替代算法研究综述》实验代码
 
-本文件夹包含《脉冲深度学习梯度替代算法研究综述》中的实验代码，不同文件夹的含义如下：
+本文件夹包含《脉冲深度学习梯度替代算法研究综述》中的实验代码，论文PDF：http://cjc.ict.ac.cn/online/onlinepaper/fw-2025818171058.pdf
+
+不同文件夹的含义如下：
 
 - `cf10`: 训练CIFAR10分类
 - `coco`: 训练COCO目标检测，基于 https://github.com/BICLab/EMS-YOLO
